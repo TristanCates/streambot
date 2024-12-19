@@ -12,7 +12,8 @@ class InternalBot:
     async def process_command(self, text: str):
         # Convert input to lowercase for case-insensitive matching
         text_lower = text.lower() 
-        
+
+      #refer to commands/internal_commands.py for more information on the commands and their functionality
         if text_lower.startswith('!swan'):
             if text_lower == '!swancommands':
                 response = await self.commands.swancommands_command()
