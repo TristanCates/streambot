@@ -1,3 +1,5 @@
 twitchio==2.6.0
 python-dotenv==1.0.0
 ollama==0.4.4
+simpleobsws==1.4.0
+websockets==10.4

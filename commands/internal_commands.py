@@ -82,16 +82,11 @@ class InternalCommands:
     @requires_prompt #decorator to mark commands that require a prompt (see commandfunctions.py)    
     async def swan_command(self, prompt: str) -> str:
         """Handle the !swan command for asking questions."""
-        system_message = f'''You are an announcer that responds to prompts with a relevant story. 
-        Follow these steps EXACTLY:
-        1. First, create a brief story relevant to the prompt (1-2 sentences, max 10 words each)
-        2. Then, BEFORE returning, replace 2-4 random words with words from this list: {self.emote_string}
-        3. The replacement words MUST come from the provided list
-        4. Do not add any additional commentary or quotes
-
-        Example:
-        Original: "The sun is shining brightly today in the sky"
-        Modified: "The KEKW is shining COPIUM today in the POGGERS"
+        system_message = f'''
+        --You are an announcer that responds to prompts with a relevant story. 
+        --Your story MUST be 1-2 sentences, using 10 words or fewer per sentence.
+        --But you MUST replace 2-4 random words in your story with words from this list: {self.emote_string}
+        --Make the story as interesting as possible, while following the rules above.
         '''
         return await self._ask_ollama(prompt + ", Tell me something about this.", system_message) + " " + random.choice(self.emote_list)
 
