@@ -22,3 +22,5 @@ def requires_prompt(func: Callable) -> Callable:
     """Decorator to mark commands that require a prompt."""
     func.requires_prompt = True
     return func 
+
+
